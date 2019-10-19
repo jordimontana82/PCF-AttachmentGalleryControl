@@ -6,7 +6,8 @@
     "build": "pcf-scripts build",
     "clean": "pcf-scripts clean",
     "rebuild": "pcf-scripts rebuild",
-    "start": "pcf-scripts start"
+    "start": "pcf-scripts start",
+    "test": "jest"
   },
   "dependencies": {
     "@types/node": "^10.12.18",
@@ -14,6 +15,32 @@
   },
   "devDependencies": {
     "pcf-scripts": "~0",
-    "pcf-start": "~0"
+    "pcf-start": "~0",
+    "@types/jest": "^22.2.3",
+    "jest": "^22.4.4",
+    "ts-jest": "^22.4.6",
+    "pcf-mock": "0.0.5",
+    "guid": "0.0.12"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "node"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testURL": "http://localhost/",
+    "testMatch": [
+      "**/tests/**/*.+(ts|js)"
+    ],
+    "setupFiles": [
+      "./setup/setup-jest.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      ".d.ts"
+    ]
   }
 }

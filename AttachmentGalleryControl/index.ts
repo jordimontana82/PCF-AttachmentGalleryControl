@@ -12,9 +12,9 @@ export class AttachmentGalleryControl implements ComponentFramework.StandardCont
 	private _previewImg: HTMLImageElement;
 	private _thumbnailsGallery: HTMLDivElement;
 	private _container: HTMLDivElement;
-	private _context: ComponentFramework.Context<IInputs>;
+	_context: ComponentFramework.Context<IInputs>;
 	private _currentIndex: number;
-	private _notes: Attachment[]; 
+	_notes: Attachment[]; 
 	private _modalContainer: HTMLDivElement;
 	private _modalImage: HTMLImageElement;
 	private _noteTitle: HTMLParagraphElement;
@@ -221,7 +221,7 @@ export class AttachmentGalleryControl implements ComponentFramework.StandardCont
 		this._modalContainer.style.display = "none";
 	}
 
-	private async GetAttachments(curentRecord: ComponentFramework.EntityReference): Promise<Attachment[]> {
+	public async GetAttachments(curentRecord: ComponentFramework.EntityReference): Promise<Attachment[]> {
 		let searchQuery = "?$select=annotationid,documentbody,mimetype,notetext,subject&$filter=_objectid_value eq " + 
 		curentRecord.id +
 		" and  isdocument eq true and startswith(mimetype, 'image/')";
